@@ -74,6 +74,7 @@ const factory = (Input) => {
     close = () => {
       if (this.state.active) {
         this.setState({active: false});
+        if (this.props.onBlur) this.props.onBlur(event);
       }
     }
 
@@ -150,7 +151,7 @@ const factory = (Input) => {
       }, this.props.className);
 
       return (
-        <div data-react-toolbox='dropdown' className={className}>
+        <div data-react-toolbox='dropdown' className={className} onBlur={this.close}>
           <Input
             {...others}
             className={theme.value}
